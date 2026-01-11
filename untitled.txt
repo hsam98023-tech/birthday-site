@@ -1,0 +1,205 @@
+### الكود الكامل:
+
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد سعيد!</title>
+    <style>
+        /* --- Google Font --- */
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        /* --- Basic Styles --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden; /* لمنع ظهور scrollbars بسبب العناصر المتحركة */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            color: white;
+            /* --- Gradient Background --- */
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #fecfef, #a1c4fd, #c2e9fb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        /* --- Gradient Animation --- */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- Main Content Container --- */
+        .container {
+            z-index: 10;
+            position: relative;
+        }
+
+        /* --- Birthday Message --- */
+        h1 {
+            font-family: 'Pacifico', cursive; /* الخط المميز */
+            font-size: clamp(3rem, 10vw, 6rem); /* حجم خط متجاوب */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+        }
+
+        /* --- Surprise Button --- */
+        .surprise-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4a4a4a;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .surprise-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- Confetti --- */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00; /* سيتم تغيير اللون بالجافاسكريبت */
+            top: -20px; /* يبدأ من فوق الشاشة */
+            opacity: 0.8;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* --- Balloons --- */
+        .balloon {
+            position: fixed;
+            width: 80px;
+            height: 100px;
+            background-color: red; /* سيتم تغيير اللون بالجافاسكريبت */
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            bottom: -150px; /* يبدأ من تحت الشاشة */
+            opacity: 0.8;
+            animation: rise 10s ease-in forwards;
+            z-index: 5;
+        }
+
+        /* --- Balloon String --- */
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 80px;
+            background-color: rgba(0, 0, 0, 0.3);
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes rise {
+            to {
+                transform: translateY(-120vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- --- Main Content --- -->
+    <div class="container">
+        <h1>Happy Birthday [Name]!</h1>
+        <button class="surprise-button" id="surpriseBtn">Click for a surprise</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const surpriseBtn = document.getElementById('surpriseBtn');
+            const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800'];
+
+            // --- 1. Confetti Effect on Page Load ---
+            function createConfettiPiece() {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                const randomX = Math.random() * window.innerWidth;
+                const animationDuration = Math.random() * 3 + 4; // مدة السقوط بين 4 و 7 ثواني
+                const animationDelay = Math.random() * 5; // تأخير البدء
+
+                confetti.style.backgroundColor = randomColor;
+                confetti.style.left = `${randomX}px`;
+                confetti.style.animationDuration = `${animationDuration}s`;
+                confetti.style.animationDelay = `${animationDelay}s`;
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+                document.body.appendChild(confetti);
+
+                // إزالة العنصر بعد انتهاء الحركة لتنظيف الـ DOM
+                setTimeout(() => {
+                    confetti.remove();
+                }, (animationDuration + animationDelay) * 1000);
+            }
+
+            function startConfetti() {
+                // إطلاق 100 قطعة من الورق الملون خلال 3 ثواني
+                for (let i = 0; i < 100; i++) {
+                    setTimeout(() => {
+                        createConfettiPiece();
+                    }, i * 30);
+                }
+            }
+            
+            startConfetti(); // تشغيل التأثير عند تحميل الصفحة
+
+            // --- 2. Balloons Effect on Button Click ---
+            function createBalloon() {
+                const balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                const randomX = Math.random() * (window.innerWidth - 100); // لمنع خروج البالون من الشاشة
+
+                balloon.style.backgroundColor = randomColor;
+                balloon.style.left = `${randomX}px`;
+                
+                document.body.appendChild(balloon);
+
+                // إزالة العنصر بعد انتهاء الحركة
+                setTimeout(() => {
+                    balloon.remove();
+                }, 10000); // 10 ثواني (مدة الحركة)
+            }
+
+            surpriseBtn.addEventListener('click', () => {
+                // إطلاق 10 بالونات بشكل متتابع
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        createBalloon();
+                    }, i * 300); // إطلاق بالون كل 0.3 ثانية
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+```
+
+هل هناك أي تعديلات أخرى تود إضافتها؟
