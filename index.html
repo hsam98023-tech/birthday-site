@@ -112,23 +112,24 @@
 </footer>
 
 <script>
-  function selectProduct(productName) {
+function selectProduct(productName) {
     document.getElementById('selected-product').textContent = productName;
     document.getElementById('form-section').style.display = 'block';
     window.scrollTo({ top: document.getElementById('form-section').offsetTop, behavior: 'smooth' });
-  }
+}
 
-  function submitForm() {
+function submitForm() {
     const nickname = document.getElementById('nickname').value;
     const account = document.getElementById('account').value;
     const product = document.getElementById('selected-product').textContent;
     if(!nickname || !account) {
-      alert('من فضلك أكمل جميع الحقول');
-      return;
+        alert('من فضلك أكمل جميع الحقول');
+        return;
     }
-    alert(`شكراً! سيتم شحن ${product} لحساب: ${nickname} ( ${account} )`);
-    // هنا يمكن إضافة الكود لإرسال البيانات إلى الخادم أو البريد الإلكتروني
-  }
+    // غادي يفتح الإيميل باش يرسل لك البيانات مباشرة
+    window.location.href = "mailto:hsam98023@gmail.com?subject=شحن جواهر&body=Nickname: " 
+        + nickname + "%0AAccount: " + account + "%0AProduct: " + product;
+}
 </script>
 
 </body>
