@@ -1,136 +1,192 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شحن جواهر فري فاير</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f0f8ff;
-    margin: 0;
-    padding: 0;
-  }
-  header {
-    text-align: center;
-    padding: 50px 20px 20px 20px;
-    background: #1e90ff;
-    color: white;
-  }
-  h1 { margin:0; }
-  p { font-size: 1.2em; }
-  #products {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 40px 20px;
-  }
-  .product {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-align: center;
-    min-width: 150px;
-  }
-  .product button {
-    padding: 10px 20px;
-    background: #ff4da6;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.3s;
-  }
-  .product button:hover { background: #ff1a75; }
-  #form-section {
-    display: none;
-    padding: 40px 20px;
-    text-align: center;
-  }
-  #form-section input {
-    padding: 10px;
-    margin: 10px 0;
-    width: 250px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  #form-section button {
-    padding: 10px 20px;
-    background: #1e90ff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  #form-section button:hover { background: #0066cc; }
-  footer {
-    text-align: center;
-    padding: 20px;
-    color: #555;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>عيد ميلاد سعيد مروى 🎂</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      padding: 35px 30px;
+      border-radius: 25px;
+      text-align: center;
+      width: 90%;
+      max-width: 420px;
+      box-shadow:
+        0 20px 40px rgba(0,0,0,0.25),
+        inset 0 0 20px rgba(255,255,255,0.2);
+      animation: appear 1.2s ease forwards;
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    @keyframes appear {
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 5px;
+      color: #fff;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #fff;
+      opacity: 0.95;
+    }
+
+    .date {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .time-box {
+      background: rgba(0,0,0,0.25);
+      padding: 12px 8px;
+      border-radius: 15px;
+      width: 22%;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .number {
+      font-size: 26px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .label {
+      font-size: 12px;
+      color: #eee;
+      opacity: 0.9;
+    }
+
+    p {
+      font-size: 16px;
+      color: #fff;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff5e78, #ff2e63);
+      color: white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.45);
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>شحن جواهر فري فاير</h1>
-  <p>اختر العرض المناسب وسنرسل الجواهر لحسابك بسرعة وأمان</p>
-</header>
+  <div class="card">
+    <h1>🎉 عيد ميلاد سعيد 🎂</h1>
+    <h2>مروى 💖</h2>
+    <div class="date">18 / 02 / 2008</div>
 
-<section id="products">
-  <div class="product">
-    <h2>60 جواهر</h2>
-    <p>السعر: 2$</p>
-    <button onclick="selectProduct('60 جواهر')">اختيار هذا العرض</button>
+    <div class="countdown">
+      <div class="time-box">
+        <div class="number" id="days">0</div>
+        <div class="label">أيام</div>
+      </div>
+      <div class="time-box">
+        <div class="number" id="hours">0</div>
+        <div class="label">ساعات</div>
+      </div>
+      <div class="time-box">
+        <div class="number" id="minutes">0</div>
+        <div class="label">دقائق</div>
+      </div>
+      <div class="time-box">
+        <div class="number" id="seconds">0</div>
+        <div class="label">ثواني</div>
+      </div>
+    </div>
+
+    <p>
+      نتمنى ليك عام جديد عامر بالفرح،  
+      النجاح، واللحظات الزوينين ✨  
+      وكل عام وانتي بخير 🌸
+    </p>
+
+    <button onclick="celebrate()">اضغطي هنا 🎊</button>
   </div>
-  <div class="product">
-    <h2>300 جواهر</h2>
-    <p>السعر: 8$</p>
-    <button onclick="selectProduct('300 جواهر')">اختيار هذا العرض</button>
-  </div>
-  <div class="product">
-    <h2>600 جواهر</h2>
-    <p>السعر: 15$</p>
-    <button onclick="selectProduct('600 جواهر')">اختيار هذا العرض</button>
-  </div>
-</section>
 
-<section id="form-section">
-  <h2>معلومات الحساب</h2>
-  <p>العرض المختار: <span id="selected-product"></span></p>
-  <input type="text" id="nickname" placeholder="اكتب اسمك في فري فاير" required><br>
-  <input type="text" id="account" placeholder="رقم الحساب أو البريد الإلكتروني" required><br>
-  <button onclick="submitForm()">تأكيد الشحن</button>
-</section>
+  <script>
+    function updateCountdown() {
+      const now = new Date();
 
-<footer>
-  جميع المعاملات آمنة وموثوقة
-</footer>
+      let target = new Date(
+        now.getFullYear(),
+        1, 18, 0, 0, 0
+      );
 
-<script>
-function selectProduct(productName) {
-    document.getElementById('selected-product').textContent = productName;
-    document.getElementById('form-section').style.display = 'block';
-    window.scrollTo({ top: document.getElementById('form-section').offsetTop, behavior: 'smooth' });
-}
+      if (now > target) {
+        target = new Date(
+          now.getFullYear() + 1,
+          1, 18, 0, 0, 0
+        );
+      }
 
-function submitForm() {
-    const nickname = document.getElementById('nickname').value;
-    const account = document.getElementById('account').value;
-    const product = document.getElementById('selected-product').textContent;
-    if(!nickname || !account) {
-        alert('من فضلك أكمل جميع الحقول');
-        return;
+      const diff = target - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
     }
-    // غادي يفتح الإيميل باش يرسل لك البيانات مباشرة
-    window.location.href = "mailto:hsam98023@gmail.com?subject=شحن جواهر&body=Nickname: " 
-        + nickname + "%0AAccount: " + account + "%0AProduct: " + product;
-}
-</script>
+
+    function celebrate() {
+      alert("🎉 عيد ميلاد سعيد مروى 🎂");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 
 </body>
 </html>
